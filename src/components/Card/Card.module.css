@@ -1,0 +1,17 @@
+.carts {
+    border: 2px solid grey;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+
+    p {
+        text-align: center;
+    }
+}
+
+.poster {
+    text-align: center;
+    min-height: 300px;
+    min-width: 450px;
+    margin: 10px;
+}

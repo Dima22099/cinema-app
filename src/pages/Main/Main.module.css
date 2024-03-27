@@ -1,0 +1,25 @@
+.main {
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 700px;
+    margin: 0 auto;
+}
+
+.films {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 60px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.noFilm {
+    margin: 0 auto;
+    margin-top: 30px;
+}

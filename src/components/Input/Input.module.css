@@ -1,0 +1,8 @@
+.input {
+    border: 2px solid rgb(48, 52, 117);
+    border-radius: 5px;
+    width: 500px;
+    height: 40px;
+    font-weight: 600;
+    text-align: center;
+}
