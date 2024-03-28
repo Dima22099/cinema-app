@@ -1,33 +1,53 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+
+import { Loader } from '../../components';
 
 import styles from './Film.module.css';
+
+const wait = (ms) => new Promise((res) => setTimeout(res, ms)); 
 
 export const Film = () => {
     const { filmId } = useParams();
 
     const [isLoading, setIsLoading] = useState(false);
     const [detalisFilm, setDetalisFilm] = useState(null);
+    const [hasError, setHasError] = useState(false);
 
     const getFilm = async () => {
-        setIsLoading(true);
-        const res = await axios(`http://www.omdbapi.com/?i=${filmId}&apikey=d73c3c2a`);
-        setDetalisFilm(res.data);
-        setIsLoading(false);
+        try {
+            setIsLoading(true);
+
+            await wait(1_000);
+            const { data } = await axios(`http://www.omdbapi.com/?i=${filmId}&apikey=d73c3c2a`);
+
+            setDetalisFilm(data);
+        } catch (e) {
+            setHasError(true);
+        } finally {
+            setIsLoading(false);
+        }
     };
     
       useEffect(() => {
-
         getFilm();
     }, []);
 
-    if (!detalisFilm || isLoading) {
-        return <h1>Загрузка</h1>
+    if (isLoading) {
+        return (<div className={styles.spinner}>
+            <Loader variant="primary" size={'s'}/>
+        </div>)
     }
 
+    if (hasError || !detalisFilm) {
+        return <h1>Error</h1>
+    }
+
+
     return (
-        
+        <>
         <div className={styles.parent}>
 
             <div className={styles.poster}>
@@ -44,5 +64,12 @@ export const Film = () => {
                 <p>{`imdbRating: ${detalisFilm.imdbRating}`}</p> 
             </div>
         </div>
+
+        <div>
+            <NavLink to={`/`} >
+                <Button className={styles.btnBack}>{"Назад"}</Button>
+            </NavLink>
+        </div>
+        </>
     )
 };

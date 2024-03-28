@@ -1,0 +1,14 @@
+.s {
+    margin-top: 150px;
+    transform: scale(3);
+}
+
+.m {
+    margin-top: 150px;
+    transform: scale(5);
+}
+
+.l {
+    margin-top: 150px;
+    transform: scale(7);
+} 

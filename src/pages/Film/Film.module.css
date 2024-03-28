@@ -1,6 +1,7 @@
 .parent {
     display: flex;
     align-items: flex-start;
+    margin: 50px;
 }
 
 .poster {
@@ -16,4 +17,25 @@
     font-family: 'serif', sans-serif;
     font-weight: 600;
     margin-left: 80px;
+}
+
+.FilmsDetalis > * {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    background-color: #fdfdfd;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    gap: 20px;
+}
+
+.btnBack {
+    margin-left: 100px;
+    width: 200px;
 }
