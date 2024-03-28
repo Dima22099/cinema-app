@@ -2,9 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import styles from './Layout.module.css';
 
-export const Layout = () => {
-    
-  return (
+export const Layout = () => (
     <>
       <header className={styles.navbar}>
         <h1>Поиск фильмов по названию.</h1>
@@ -14,5 +12,5 @@ export const Layout = () => {
         <Outlet />
       </div>
     </>
-  )
-  };
+);
+
