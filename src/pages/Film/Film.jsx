@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { useCallback, useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
@@ -25,7 +24,7 @@ export const Film = () => {
         } finally {
             setIsLoading(false);
         }
-    }); 
+    }, []); 
     
       useEffect(() => {
         getFilm();
@@ -37,8 +36,12 @@ export const Film = () => {
         </div>)
     }
 
-    if (hasError || !filmData) {
+    if (!filmData) {
         return <h1 className={styles.loading}>Загрузка...</h1>
+    }
+
+    if (hasError) {
+        return <h1 className={styles.loading}>Ошибка загрузки ...</h1>
     }
 
 

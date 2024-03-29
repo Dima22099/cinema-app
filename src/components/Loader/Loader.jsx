@@ -1,6 +1,8 @@
 import Spinner from 'react-bootstrap/Spinner';
-import styles from './Loader.module.css';
+
 import cn from 'classnames';
+
+import styles from './Loader.module.css';
 
 export const Loader = ({ size, variant = 'primary' }) => (
         <div className={cn(styles.wrapper, styles[size])}>
