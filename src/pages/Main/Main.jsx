@@ -1,10 +1,10 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
+import { Button, Form } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { Api } from '../../api';
 
-import { Button, CustomCard, Loader } from '../../components'; 
+import { CustomCard, Loader } from '../../components'; 
 
 import styles from './Main.module.css';
 
@@ -21,13 +21,7 @@ export const Main = () => {
             e.preventDefault();
     
             setIsLoading(true);
-            const { data } = await axios(`https://api.collectapi.com/imdb/imdbSearchByName?query=${inputValue}`, {
-                method: 'GET',
-                headers: {
-                    "content-type": "application/json",
-                    "authorization": "apikey 0m0jEUzysRtP3Nh2cG6h3e:7DsVfjHS2u6SPmxKuaQXQX"
-                }
-            })
+            const { data } = await Api.searchFilm(inputValue);
             setFilms(data.result);
         } catch(e) {
             setHasError(true);
@@ -55,16 +49,15 @@ export const Main = () => {
                         autoFocus
                     />
                 </InputGroup>
-                <Button type={'submit'} label="Поиск" /> 
+                <Button type={'submit'} variant="primary" className={styles.btn}>Поиск</Button> 
             </form> 
 
             <div className={styles.films}> 
-                {(!isLoading && !films) && <h1>Введите фильм</h1>}
+                {isLoading &&  <Loader size={'s'} variant={'primary'} />}
     
+                {(!isLoading && !films) && <h1>Введите название фильма</h1>}
 
-                {(isLoading) && <Loader size={'s'} variant={'primary'} />}
-
-                {films && films.length > 0 &&
+                {(!isLoading && films && films.length > 0) &&
                     films.map((el) => 
                     <NavLink to={`/film/${el.imdbID}`} key={crypto.randomUUID()}>
                         <CustomCard  
