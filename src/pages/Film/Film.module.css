@@ -39,3 +39,9 @@
     margin-left: 100px;
     width: 200px;
 }
+
+.loading {
+    margin: 0 auto;
+    margin-top: 200px;
+    text-align: center;
+}

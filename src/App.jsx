@@ -7,12 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
 
-export const App = () =>  {
-  return (
+export const App = () => (
     <div className="page">
       <RouterProvider router={router} />
     </div>
   );
-};
+
 
 export default App;

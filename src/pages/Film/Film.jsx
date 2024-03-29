@@ -1,35 +1,31 @@
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 
 import { Loader } from '../../components';
+import { Api } from '../../api';
 
 import styles from './Film.module.css';
-
-const wait = (ms) => new Promise((res) => setTimeout(res, ms)); 
 
 export const Film = () => {
     const { filmId } = useParams();
 
     const [isLoading, setIsLoading] = useState(false);
-    const [detalisFilm, setDetalisFilm] = useState(null);
+    const [filmData, setFilmData] = useState(null);
     const [hasError, setHasError] = useState(false);
 
-    const getFilm = async () => {
+    const getFilm = useCallback(async () => {
         try {
             setIsLoading(true);
-
-            await wait(1_000);
-            const { data } = await axios(`http://www.omdbapi.com/?i=${filmId}&apikey=d73c3c2a`);
-
-            setDetalisFilm(data);
+            const { data } = await Api.getFilmData(filmId);
+            setFilmData(data);
         } catch (e) {
             setHasError(true);
         } finally {
             setIsLoading(false);
         }
-    };
+    }); 
     
       useEffect(() => {
         getFilm();
@@ -41,33 +37,32 @@ export const Film = () => {
         </div>)
     }
 
-    if (hasError || !detalisFilm) {
-        return <h1>Error</h1>
+    if (hasError || !filmData) {
+        return <h1 className={styles.loading}>Загрузка...</h1>
     }
 
 
     return (
         <>
         <div className={styles.parent}>
-
             <div className={styles.poster}>
-                <img src={`${detalisFilm.Poster}`}/>
+                <img src={`${filmData.Poster}`} alt="Постер фильма"/>
             </div>
 
             <div className={styles.FilmsDetalis}>
-                <h4>{`Title: ${detalisFilm.Title}`}</h4>
-                <p>{`Year: ${detalisFilm.Year}`}</p> 
-                <p>{`Actors: ${detalisFilm.Actors}`}</p>
-                <p>{`Plot: ${detalisFilm.Plot}`}</p> 
-                <p>{`Released: ${detalisFilm.Released}`}</p> 
-                <p>{`Runtime: ${detalisFilm.Runtime}`}</p> 
-                <p>{`imdbRating: ${detalisFilm.imdbRating}`}</p> 
+                <h4>{`Title: ${filmData.Title}`}</h4>
+                <p>{`Year: ${filmData.Year}`}</p> 
+                <p>{`Actors: ${filmData.Actors}`}</p>
+                <p>{`Plot: ${filmData.Plot}`}</p> 
+                <p>{`Released: ${filmData.Released}`}</p> 
+                <p>{`Runtime: ${filmData.Runtime}`}</p> 
+                <p>{`imdbRating: ${filmData.imdbRating}`}</p> 
             </div>
         </div>
 
         <div>
             <NavLink to={`/`} >
-                <Button className={styles.btnBack}>{"Назад"}</Button>
+                <Button className={styles.btnBack}>Назад</Button>
             </NavLink>
         </div>
         </>
