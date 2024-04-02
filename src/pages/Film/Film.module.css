@@ -1,3 +1,22 @@
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    gap: 20px;
+}
+
+.loading {
+    margin: 0 auto;
+    margin-top: 200px;
+    text-align: center;
+}
+
+.btnback {
+    margin-left: 100px;
+    width: 200px;
+}
+
 .parent {
     display: flex;
     align-items: flex-start;
@@ -10,7 +29,7 @@
     height: 444px;
 }
 
-.FilmsDetalis {
+.filmsdetalis {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -19,7 +38,7 @@
     margin-left: 80px;
 }
 
-.FilmsDetalis > * {
+.filmsdetalis > * {
     border: 1px solid;
     border-radius: 5px;
     padding: 5px;
@@ -27,21 +46,11 @@
     background-color: #fdfdfd;
 }
 
-.spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 200px;
-    gap: 20px;
+.div_button {
+    margin-top: 20px;
 }
 
-.btnBack {
-    margin-left: 100px;
-    width: 200px;
+.div_button > * {
+    width: 100%;
 }
 
-.loading {
-    margin: 0 auto;
-    margin-top: 200px;
-    text-align: center;
-}

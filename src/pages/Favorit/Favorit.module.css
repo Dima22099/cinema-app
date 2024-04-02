@@ -1,0 +1,11 @@
+.favorits {
+    display: flex;
+    gap: 56px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.title {
+    margin: 0 auto;
+}

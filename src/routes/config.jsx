@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { Layout } from '../components';
-import { Main, Film } from '../pages';
+import { Main, Film, Favorit } from '../pages';
 
 
 export const router = createBrowserRouter([
@@ -15,6 +15,10 @@ export const router = createBrowserRouter([
       {
         path: '/film/:filmId',
         element: <Film />, 
+      },
+       {
+        path: '/favorits',
+        element: <Favorit />, 
       },
     ],
   },
