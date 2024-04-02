@@ -1,17 +1,20 @@
-.carts {
-    border: 2px solid grey;
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
-
-    p {
-        text-align: center;
-    }
+.cards {
+    width: 18rem;
 }
 
-.poster {
-    text-align: center;
-    min-height: 300px;
-    min-width: 450px;
-    margin: 10px;
+.star {
+    position: absolute;
+    width: 50px;
+    cursor: pointer;
+    top: 10px;
+    right: 30px;
+    border: 1px solid #ef00ff;
+    border-radius: 50%;
+    
+    background-color: antiquewhite;
 }
+
+.checked {
+    background-color: yellow;
+}
+

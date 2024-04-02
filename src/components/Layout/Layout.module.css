@@ -1,7 +1,10 @@
 .navbar {
-    text-align: center;
+    display: flex;
     padding: 12px;
+    align-items: center;
+    gap: 40px;
     background-color: #c3aed6;
+    justify-content: center;
 
     h1 {
         margin: 0;
@@ -9,6 +12,9 @@
 
     p {
         margin: 0;
+    }
+    button {
+        background-color: rgb(75, 112, 182);
     }
 }
 
