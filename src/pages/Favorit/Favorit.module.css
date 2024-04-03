@@ -1,0 +1,8 @@
+.favorits {
+    display: flex;
+    gap: 20px;
+}
+
+.title {
+    margin: 0 auto;
+}
