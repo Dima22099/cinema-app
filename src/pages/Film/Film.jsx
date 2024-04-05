@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { Loader } from '../../components';
 import { Api } from '../../api';
@@ -9,6 +10,7 @@ import { FavoritFilms } from '../../context';
 import styles from './Film.module.css';
 
 export const Film = () => {
+    const { t } = useTranslation();
     const { favoritFilms, toggleFavorits } = useContext(FavoritFilms)
 
     const { filmId } = useParams();
@@ -40,27 +42,27 @@ export const Film = () => {
     }
 
     if (!filmData) {
-        return <h1 className={styles.loading}>Загрузка...</h1>
+        return <h1 className={styles.loading}>{t("loader")}...</h1>
     }
 
     if (hasError) {
-        return <h1 className={styles.loading}>Ошибка загрузки ...</h1>
+        return <h1 className={styles.loading}>{t("has_error")} ...</h1>
     }
 
-
     const isFavorite = Boolean(favoritFilms[filmId]);
-    const buttonText = isFavorite ? "Удалить из избранного" : "Добавить в избранное";
+    const buttonText =  t(`film.${isFavorite ? 'remove': 'add_favorite'}`);
+
     return (
         <>
             <div>
                 <NavLink to={'/'} >
-                    <Button className={styles.btnback}>На главную</Button>
+                    <Button className={styles.btnback}>{t("film.to_main")}</Button>
                 </NavLink>
             </div>
 
             <div className={styles.parent}>
                 <div className={styles.poster}>
-                    <img src={filmData.Poster} alt="Постер фильма"/>
+                    <img src={filmData.Poster} alt={t("film.poster")}/>
 
                     <Button 
                         onClick={() => toggleFavorits(filmId)}
@@ -70,13 +72,13 @@ export const Film = () => {
                 </div>
 
                 <div className={styles.filmsdetalis}>
-                    <h4>{`Title: ${filmData.Title}`}</h4>
-                    <p>{`Year: ${filmData.Year}`}</p> 
-                    <p>{`Actors: ${filmData.Actors}`}</p>
-                    <p>{`Plot: ${filmData.Plot}`}</p> 
-                    <p>{`Released: ${filmData.Released}`}</p> 
-                    <p>{`Runtime: ${filmData.Runtime}`}</p> 
-                    <p>{`imdbRating: ${filmData.imdbRating}`}</p> 
+                    <h4>{t("film.title")}: {filmData.Title}</h4>
+                    <p>{`${t("film.year")}: ${filmData.Year}`}</p> 
+                    <p>{`${t("film.actors")}: ${filmData.Actors}`}</p>
+                    <p>{`${t("film.plot")}: ${filmData.Plot}`}</p> 
+                    <p>{`${t("film.relesed")}: ${filmData.Released}`}</p> 
+                    <p>{`${t("film.runtime")}: ${filmData.Runtime}`}</p> 
+                    <p>{`${t("film.imbd_rating")}: ${filmData.imdbRating}`}</p> 
                 </div>
             </div>
 

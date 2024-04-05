@@ -8,5 +8,5 @@ export const Api = {
                     "authorization": "apikey 0m0jEUzysRtP3Nh2cG6h3e:7DsVfjHS2u6SPmxKuaQXQX"
                 }
     }),
-    getFilmData: async (filmId) => await axios(`http://www.omdbapi.com/?i=${filmId}&apikey=d73c3c2a`)
+    getFilmData: async (filmId) => await axios(`http://www.omdbapi.com/?i=${filmId}&apikey=d73c3c2a`),
 };
