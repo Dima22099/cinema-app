@@ -9,8 +9,9 @@ import { FavoritFilms } from '../../context';
 
 import styles from './Film.module.css';
 
+
 export const Film = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { favoritFilms, toggleFavorits } = useContext(FavoritFilms)
 
     const { filmId } = useParams();
@@ -18,20 +19,24 @@ export const Film = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [filmData, setFilmData] = useState(null);
     const [hasError, setHasError] = useState(false);
-
+    const [plot, setPlot] = useState({ en: '', ru: '' });
+ 
     const getFilm = useCallback(async () => {
         try {
             setIsLoading(true);
             const { data } = await Api.getFilmData(filmId);
             setFilmData(data);
+
+            const ru = await Api.getTranslate(data.Plot, 'ru');
+            setPlot({ en: data.Plot, ru: ru });
         } catch (e) {
             setHasError(true);
         } finally {
             setIsLoading(false);
         }
-    }, []); 
+    }, []);
     
-      useEffect(() => {
+    useEffect(() => {
         getFilm();
     }, []);
 
@@ -75,7 +80,7 @@ export const Film = () => {
                     <h4>{t("film.title")}: {filmData.Title}</h4>
                     <p>{`${t("film.year")}: ${filmData.Year}`}</p> 
                     <p>{`${t("film.actors")}: ${filmData.Actors}`}</p>
-                    <p>{`${t("film.plot")}: ${filmData.Plot}`}</p> 
+                    <p>{`${t("film.plot")}: ${plot[i18n.language]}`}</p> 
                     <p>{`${t("film.relesed")}: ${filmData.Released}`}</p> 
                     <p>{`${t("film.runtime")}: ${filmData.Runtime}`}</p> 
                     <p>{`${t("film.imbd_rating")}: ${filmData.imdbRating}`}</p> 
