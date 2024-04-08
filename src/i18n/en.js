@@ -13,7 +13,7 @@ export default {
         },
         film: {
             remove: "Remove from favorites",
-            add_favorite: "Add film favorite",
+            add_favorite: "Add again film favorite",
             to_main: "main",
             poster: "film poster",
             title: "Title",

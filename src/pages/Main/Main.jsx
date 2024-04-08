@@ -69,7 +69,7 @@ export const Main = () => {
                     {(!isLoading && !films) && <h1>{t('main.title')}</h1>}
 
                     {(!isLoading && films && films.length > 0) &&
-                        films.map((el) => {
+                        films.sort((a, b) => b.Year - a.Year).map((el) => {
                             const isFavorite = Boolean(favoritFilms[el.imdbID]);
 
                             return (

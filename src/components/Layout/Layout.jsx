@@ -28,11 +28,11 @@ const { t, i18n } = useTranslation();
 
         <Form.Select className={styles.form} onChange={(e) => changeLanguage(e.target.value)}>
           <option value={'ru'}>
-            <span>RU</span>
+            {"RU"}
           </option>
 
           <option value={'en'}>
-            <span>EN</span>
+            {"EN"}
           </option>
       </Form.Select>
       </header>

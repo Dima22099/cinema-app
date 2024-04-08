@@ -25,10 +25,10 @@ export const Film = () => {
         try {
             setIsLoading(true);
             const { data } = await Api.getFilmData(filmId);
-            setFilmData(data);
-
             const ru = await Api.getTranslate(data.Plot, 'ru');
-            setPlot({ en: data.Plot, ru: ru });
+
+            setFilmData(data);
+            setPlot({ en: data.Plot, ru });
         } catch (e) {
             setHasError(true);
         } finally {
@@ -69,11 +69,13 @@ export const Film = () => {
                 <div className={styles.poster}>
                     <img src={filmData.Poster} alt={t("film.poster")}/>
 
-                    <Button 
+                    <div className={styles.div_button}>
+                        <Button 
                         onClick={() => toggleFavorits(filmId)}
-                        className={isFavorite ? styles.add_favorite : styles.delete_favorite}>
+                            className={isFavorite ? 'btn-Primary' : 'btn-secondary' }>
                         {buttonText}
                     </Button>
+                    </div>
                 </div>
 
                 <div className={styles.filmsdetalis}>
@@ -81,7 +83,7 @@ export const Film = () => {
                     <p>{`${t("film.year")}: ${filmData.Year}`}</p> 
                     <p>{`${t("film.actors")}: ${filmData.Actors}`}</p>
                     <p>{`${t("film.plot")}: ${plot[i18n.language]}`}</p> 
-                    <p>{`${t("film.relesed")}: ${filmData.Released}`}</p> 
+                    <p>{`${t("film.relesed")}: ${new Date(filmData.Released)}.toLocaleDateString("ru")`}</p> 
                     <p>{`${t("film.runtime")}: ${filmData.Runtime}`}</p> 
                     <p>{`${t("film.imbd_rating")}: ${filmData.imdbRating}`}</p> 
                 </div>
