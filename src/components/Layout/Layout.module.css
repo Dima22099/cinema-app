@@ -23,3 +23,8 @@
     padding: 12px;
     background: rgb(115, 173, 115);
 }
+
+.form {
+    max-width: 70px;
+}
+

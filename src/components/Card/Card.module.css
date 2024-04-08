@@ -18,3 +18,18 @@
     background-color: yellow;
 }
 
+.img_postre {
+    min-width: 260px;
+    min-height: 420px;
+}
+
+.card_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card_bottun {
+    margin: 0 auto;
+}
+

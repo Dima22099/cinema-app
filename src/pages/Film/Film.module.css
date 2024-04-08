@@ -46,18 +46,11 @@
     background-color: #fdfdfd;
 }
 
-
-
-
-
-.add_favorite {
+.div_button {
     margin-top: 20px;
-    width: 100%;
-    background-color: red;
 }
 
-.delete_favorite {
-    margin-top: 20px;
+.div_button > * {
     width: 100%;
-    background-color: blueviolet;
 }
+

@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { FavoritFilms } from '../../context';
 import { Api } from '../../api';
@@ -6,7 +7,10 @@ import { CustomCard } from '../../components';
 
 import styles from './Favorit.module.css';
 
+
 export const Favorit = () => {
+    const { t } = useTranslation();
+
     const [allFilmsFavorite, setAllFilmsFavorite] = useState([]);
     const { favoritFilms, toggleFavorits  } = useContext(FavoritFilms);
 
@@ -16,9 +20,9 @@ export const Favorit = () => {
                 const { data } = await Api.getFilmData(el);
                 return data;
             });
-
+            
             const res = await Promise.all(promises);
-            setAllFilmsFavorite(res);
+            setAllFilmsFavorite(res.sort((a, b) => b.Year - a.Year));
         };
 
         getFavoriteFilms();
@@ -31,7 +35,7 @@ export const Favorit = () => {
 
     return (
         <div className={styles.favorits}>
-            {!allFilmsFavorite.length && <h1 className={styles.title}>У вас нет еще избранных фильмов.</h1>}
+            {!allFilmsFavorite.length && <h1 className={styles.title}>{t("favorite.message")}</h1>}
             {allFilmsFavorite.map((el) => {  
                 const isFavorite = Boolean(favoritFilms[el.imdbID]);
                 return (
@@ -41,7 +45,7 @@ export const Favorit = () => {
                         title={el.Title} 
                         imdbID={el.imdbID}
                         poster={el.Poster}
-                        buttonText={'Посмотреть подробности'}
+                        buttonText={t("favorite.view_details")}
                         isFavorite={isFavorite}
                         onFavoriteToggle={handleChecked}
                     />
@@ -50,3 +54,5 @@ export const Favorit = () => {
         </div>
     )
 };
+
+
