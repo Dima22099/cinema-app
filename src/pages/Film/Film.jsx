@@ -57,6 +57,8 @@ export const Film = () => {
     const isFavorite = Boolean(favoritFilms[filmId]);
     const buttonText =  t(`film.${isFavorite ? 'remove': 'add_favorite'}`);
 
+    const isFavorite = Boolean(favoritFilms[filmId]);
+    const buttonText = isFavorite ? "Удалить из избранного" : "Добавить в избранное";
     return (
         <>
             <div>
@@ -68,7 +70,6 @@ export const Film = () => {
             <div className={styles.parent}>
                 <div className={styles.poster}>
                     <img src={filmData.Poster} alt={t("film.poster")}/>
-
                     <div className={styles.div_button}>
                         <Button 
                         onClick={() => toggleFavorits(filmId)}
@@ -88,7 +89,6 @@ export const Film = () => {
                     <p>{`${t("film.imbd_rating")}: ${filmData.imdbRating}`}</p> 
                 </div>
             </div>
-
         </>
     )
 };

@@ -6,9 +6,9 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { Api } from '../../api';
 import { FavoritFilms } from '../../context/';
 import { CustomCard, Loader } from '../../components'; 
+import { FavoritFilms } from '../../context/';
 
 import styles from './Main.module.css';
-
 
 export const Main = () => {
     const { t } = useTranslation();
@@ -19,8 +19,6 @@ export const Main = () => {
     const [hasError, setHasError] = useState(false);
 
     const { favoritFilms, toggleFavorits  } = useContext(FavoritFilms);
-
-  
 
     const getFilms = async (e) => {
         setFilms(null);
@@ -64,10 +62,8 @@ export const Main = () => {
 
             <div>
                 <div className={styles.films}> 
-                    {isLoading &&  <Loader size={'s'} variant={'primary'} />}
-        
+                    {isLoading &&  <Loader size={'s'} variant={'primary'} />}        
                     {(!isLoading && !films) && <h1>{t('main.title')}</h1>}
-
                     {(!isLoading && films && films.length > 0) &&
                         films.map((el) => {
                             const isFavorite = Boolean(favoritFilms[el.imdbID]);
