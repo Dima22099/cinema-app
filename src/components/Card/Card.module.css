@@ -1,8 +1,8 @@
-.cards {
+.card {
     width: 18rem;
 }
 
-.star {
+.card__star {
     position: absolute;
     width: 50px;
     cursor: pointer;
@@ -14,22 +14,22 @@
     background-color: antiquewhite;
 }
 
-.checked {
+.card__star__checked {
     background-color: yellow;
 }
 
-.img_postre {
+.card__poster {
     min-width: 260px;
     min-height: 420px;
 }
 
-.card_body {
+.card__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.card_bottun {
+.card__content__link {
     margin: 0 auto;
 }
 
