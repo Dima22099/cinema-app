@@ -31,6 +31,8 @@ export default {
         layout: {
             main: "Главная",
             favorite: "Избранное",
+            language: "Язык",
+            theme: "Сменить тему",
         }
     }
 };

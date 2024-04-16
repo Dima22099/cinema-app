@@ -35,7 +35,7 @@ export const Favorit = () => {
 
     return (
         <div className={styles.favorits}>
-            {!allFilmsFavorite.length && <h1 className={styles.title}>{t("favorite.message")}</h1>}
+            {!allFilmsFavorite.length && <h1 className={styles.favorits__title}>{t("favorite.message")}</h1>}
             {allFilmsFavorite.map((el) => {  
                 const isFavorite = Boolean(favoritFilms[el.imdbID]);
                 return (

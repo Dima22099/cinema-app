@@ -31,6 +31,8 @@ export default {
         layout: {
             main: "Main",
             favorite: "Favorite",
+            language: "language",
+            theme: "сhange theme",
         }
     }
 };

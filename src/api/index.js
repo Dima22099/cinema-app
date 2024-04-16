@@ -11,11 +11,4 @@ export const Api = {
                 }
     }),
     getFilmData: async (filmId) => await axios(`http://www.omdbapi.com/?i=${filmId}&apikey=d73c3c2a`),
-    getTranslate: async (text, lang) => {
-        const { data: { data: { translations } }} =  await axios.post(`https://translation.googleapis.com/language/translate/v2?key= ${API_KEY}`, {
-            q: text,
-            target: lang,
-        })    
-        return translations[0].translatedText;
-    }
  };

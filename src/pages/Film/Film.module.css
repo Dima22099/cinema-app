@@ -6,10 +6,18 @@
     gap: 20px;
 }
 
-.loading {
+.loader {
     margin: 0 auto;
     margin-top: 200px;
     text-align: center;
+}
+
+.link__wrapper {
+    margin-left: 120px;
+}
+
+.link {
+    text-decoration: none;
 }
 
 .btnback {
@@ -17,7 +25,7 @@
     width: 200px;
 }
 
-.parent {
+.poster__wrapper {
     display: flex;
     align-items: flex-start;
     margin: 50px;
@@ -29,28 +37,28 @@
     height: 444px;
 }
 
-.filmsdetalis {
+.film {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     font-family: 'serif', sans-serif;
     font-weight: 600;
     margin-left: 80px;
+    max-width: 1300px;
+    border: 10px solid grey;
+    border-radius: 7px;
+    color: var(--color-main);
 }
 
-.filmsdetalis > * {
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 5px;
-    padding-left: 10px;
-    background-color: #fdfdfd;
+.film > * {
+    padding: 20px;
 }
 
-.div_button {
+.toggle_btn {
     margin-top: 20px;
 }
 
-.div_button > * {
+.toggle_btn > * {
     width: 100%;
 }
 

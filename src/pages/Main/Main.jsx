@@ -1,13 +1,14 @@
 import { useState, useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { useTranslation } from 'react-i18next';
 
 import { Api } from '../../api';
 import { FavoritFilms } from '../../context/';
 import { CustomCard, Loader } from '../../components'; 
 
 import styles from './Main.module.css';
+
 
 export const Main = () => {
     const { t } = useTranslation();
@@ -43,7 +44,7 @@ export const Main = () => {
 
     return (
         <div className={styles.main}>
-            <h1>{t("title")}</h1>
+            <h1 className={styles.title}>{t("title")}</h1>
 
             <form onSubmit={getFilms} className={styles.form}>
                 <InputGroup>
@@ -56,7 +57,7 @@ export const Main = () => {
                         autoFocus
                     />
                 </InputGroup>
-                <Button type={'submit'} variant="primary">{t("search")}</Button> 
+                <Button type={'submit'} disabled={!inputValue.length} variant="primary">{t("search")}</Button> 
             </form> 
 
             <div>

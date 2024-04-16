@@ -1,19 +1,30 @@
+:root[data-theme="light"] {
+  --background-main: #ffff;
+  --color-main: black;
+}
+
+:root[data-theme="dark"] {
+  --background-main: #222730;
+  --color-main: white;
+}
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-
 body {
     display: flex;
     flex-direction: column;
+    background: none;
+
+    font-family: "Playfair Display", serif;
 }
 
 #root {
     height: 100%;
 }
-
 
 .page {
     display: flex;
