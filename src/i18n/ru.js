@@ -29,10 +29,11 @@ export default {
             view_details: "Посмотреть подробности",
         },
         layout: {
-            main: "Главная",
-            favorite: "Избранное",
+            main: "Поиск фильмов",
+            favorite: "Мои фильмы",
             language: "Язык",
             theme: "Сменить тему",
+            log_in: "Войти",
         }
     }
 };

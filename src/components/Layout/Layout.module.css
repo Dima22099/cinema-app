@@ -1,16 +1,26 @@
-.navbar {
+.page {
     display: flex;
-    justify-content: space-around;
-    padding: 12px;
-    gap: 40px;
-    background-color: #c3aed6;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    
+    border: 1px solid red;
+    background: var(--background);
+    background-image: var(--background-image);
 }
 
-.tabs {
+.page__content {
+    width: 1200px;
+    margin: 0 auto;
+    border: 1px solid green;
+}
+
+.navbar {
     display: flex;
-    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    border: 1px solid white;
 }
 
 .settings {
@@ -45,5 +55,35 @@
 .content {
     flex: 1;
     padding: 12px;
-    background: var(--background-main);
+}
+
+.favorits {
+    display: flex;
+    gap: 10px;
+}
+.favorits__count {
+    /* display: flex; */
+    /* width: 24px; */
+    /* height: 24px; */
+    /* border-radius: 10%; */
+    /* background-color: blueviolet; */
+}
+
+.favorits_count__number {
+    display: table-cell;
+    width: 24px;
+    text-align: center;
+    height: 24px;
+    border-radius: 50%;
+    background-color: blueviolet;
+}
+
+.log_in {
+    display: flex;
+    flex-direction: row;
+    /* margin-right: 10px; */
+}
+
+.img__log_in {
+    margin-left: 10px;
 }

@@ -1,11 +1,12 @@
 :root[data-theme="light"] {
-  --background-main: #ffff;
   --color-main: black;
+  --background: #ffff;
 }
 
 :root[data-theme="dark"] {
-  --background-main: #222730;
   --color-main: white;
+  --background: #121829;
+  --background-image: url('/Background_main.png');
 }
 
 html, body {
@@ -23,11 +24,5 @@ body {
 }
 
 #root {
-    height: 100%;
-}
-
-.page {
-    display: flex;
-    flex-direction: column;
     height: 100%;
 }

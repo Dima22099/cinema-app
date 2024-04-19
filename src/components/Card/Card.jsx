@@ -13,7 +13,7 @@ export const CustomCard = ({ title, year, poster, buttonText, imdbID, isFavorite
         <Card.Img variant="top" src={poster} className={styles.card__poster} />
         <div onClick={() => onFavoriteToggle(imdbID)}>
             <img className={cn(styles.card__star, { [styles.card__star__checked]: isFavorite })}
-                src={'public/star-sharp-svgrepo-com.svg'}
+                src={'/star-sharp-svgrepo-com.svg'}
                 alt='img favorits'
             />
         </div>
