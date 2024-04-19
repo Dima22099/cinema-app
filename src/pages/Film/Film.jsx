@@ -20,7 +20,7 @@ export const Film = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [filmData, setFilmData] = useState(null);
     const [hasError, setHasError] = useState(false);
- 
+
     const getFilm = useCallback(async () => {
         try {
             setIsLoading(true);
@@ -32,7 +32,7 @@ export const Film = () => {
             setIsLoading(false);
         }
     }, []);
-    
+
     useEffect(() => {
         getFilm();
     }, []);
@@ -70,7 +70,7 @@ export const Film = () => {
                 <div className={styles.poster}>
                     <img src={filmData.Poster} alt={t("film.poster")} />
                     <div className={styles.toggle_btn}>
-                        <Button 
+                        <Button
                             onClick={() => toggleFavorits(filmId)}
                             className={isFavorite ? 'btn-Primary' : 'btn-secondary'}
                         >
@@ -84,7 +84,7 @@ export const Film = () => {
                         <span>{t("film.title")}: {filmData.Title}</span><br />
                         <span>{t("film.year")}: {filmData.Year}</span><br />
                         <span>{t("film.actors")}: {filmData.Actors}</span><br />
-                        <span>{t("film.plot")}: {filmData.Plot}</span><br /> 
+                        <span>{t("film.plot")}: {filmData.Plot}</span><br />
                         <span>{t("film.relesed")}: {relesedDate}</span><br />
                         <span>{t("film.runtime")}: {filmData.Runtime}</span><br />
                         <span>{t("film.imbd_rating")}: {filmData.imdbRating}</span><br />

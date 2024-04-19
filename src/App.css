@@ -1,10 +1,13 @@
 :root[data-theme="light"] {
   --color-main: black;
+  --color-secondary: #5e5e5e;
   --background: #ffff;
+  --background-image: url('/Background_main.png');
 }
 
 :root[data-theme="dark"] {
   --color-main: white;
+  --color-secondary: #A8AEBF;
   --background: #121829;
   --background-image: url('/Background_main.png');
 }

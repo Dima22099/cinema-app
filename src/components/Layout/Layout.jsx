@@ -6,6 +6,7 @@ import { Translate, MoonStars, BrightnessHigh } from 'react-bootstrap-icons';
 
 import { ThemeContext, FavoritFilms } from '../../context';
 import styles from './Layout.module.css';
+import cn from 'classnames';
 
 
 export const Layout = () => {
@@ -13,24 +14,23 @@ export const Layout = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const { favoritFilms } = useContext(FavoritFilms);
 
-  const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
-  }
-  // console.log('favoritFilms', favoritFilms);
+  const changeLanguage = (language) => i18n.changeLanguage(language);
+  const getNavLinkClass = ({ isActive }) => cn(styles.link, { [styles.link__active]: isActive });
+
   return (
     <div className={styles.page}>
       <div className={styles.page__content}>
         <header className={styles.navbar}>
           <div className={styles.tabs}>
             <NavLink to={'/favorits'} >
-                <img className={styles.icon_logo} src={'/logo.svg'} alt='icon_logo' />
+                <img src={'/logo.svg'} alt='icon_logo' />
             </NavLink>
           </div>
 
           <div className={styles.settings}>
             <div>
               <div className={styles.settings__languages}>
-                <Translate size={25} />
+                <Translate color={theme === 'dark' ? 'white' : 'black'} size={25} />
                 {' '}
                 <span>{t("layout.language")}</span>
               </div>
@@ -45,15 +45,15 @@ export const Layout = () => {
                 </option>
               </Form.Select>
             </div>
-            
+
             <div className={styles.theme_toggler}>
               <div className={styles.theme_toggler__icon}>
-                {theme === 'dark' 
-                  ? <MoonStars size={40} />
+                {theme === 'dark'
+                  ? <MoonStars color={'white'}  size={40} />
                   : <BrightnessHigh size={40} />
                 }
               </div>
-      
+
               <Form className={styles.switch}>
                 <Form.Check
                   type="switch"
@@ -61,23 +61,21 @@ export const Layout = () => {
                 />
               </Form>
             </div>
-            <div className={styles.favorits}>
-              <NavLink to={'/'}>
+
+            <div className={styles.links}>
+              <NavLink to={'/'} className={getNavLinkClass}>
                 {t("layout.main")}
               </NavLink>
-              <div className={styles.favorits__count}>
-                <NavLink to={'/favorits'} >
+
+                <NavLink to={'/favorits'} className={getNavLinkClass}>
                   {t("layout.favorite")}
-                  <span> - </span>
-                  {<span className={styles.favorits_count__number}>{ Object.keys(favoritFilms).length}</span>}
+                  <span className={styles.link__count}>{Object.keys(favoritFilms).length}</span>
                 </NavLink>
-              </div>
-              <div className={styles.log_in}>
-                <NavLink to={'/Log_in'}>  
+
+                <NavLink to={'/Log_in'} className={getNavLinkClass}>
                   {t("layout.log_in")}
                     <img className={styles.img__log_in} src={"/Login 3.svg"} />
                 </NavLink>
-              </div>
             </div>
           </div>
         </header>
