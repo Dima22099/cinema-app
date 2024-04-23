@@ -1,7 +1,7 @@
 export default {
     translation: {
         search: "search",
-        title: "Kinopoisk",
+        title: "Search",
         has_error: "Nothing found",
         loader: "Loader",
         
@@ -10,10 +10,11 @@ export default {
             title: "Enter movie title",
             placeholder: "search films",
             details: "view details",
+            search_detalis: "Enter the name of a movie, cartoon or cartoon to search and add to favorites.",
         },
         film: {
             remove: "Remove from favorites",
-            add_favorite: "Add film favorite",
+            add_favorite: "add favorite",
             to_main: "main",
             poster: "film poster",
             title: "Title",

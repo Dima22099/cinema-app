@@ -4,7 +4,7 @@ import { ArrowLeft } from 'react-bootstrap-icons';
 import { NavLink, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { Loader } from '../../components';
+import { Loader, My_Card } from '../../components';
 import { Api } from '../../api';
 import { FavoritFilms } from '../../context';
 

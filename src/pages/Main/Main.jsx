@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Api } from '../../api';
 import { FavoritFilms } from '../../context/';
-import { CustomCard, Loader } from '../../components'; 
+import { Loader, My_Card } from '../../components'; 
 
 import styles from './Main.module.css';
 
@@ -37,17 +37,9 @@ export const Main = () => {
     };
     
     if (hasError) {
-        return <h1 className={styles.error}>{t("has_error")}</h1>
-    }
-
-    const onFavoriteToggle = (imdbID) => toggleFavorits(imdbID);
-
-    return (
-        <div className={styles.main}>
-            <h1 className={styles.title}>{t("title")}</h1>
-
-            <form onSubmit={getFilms} className={styles.form}>
-                <InputGroup>
+        return (
+            <div>
+                <InputGroup className={styles.input_group}>
                     <Form.Control
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
@@ -57,29 +49,63 @@ export const Main = () => {
                         autoFocus
                     />
                 </InputGroup>
-                <Button type={'submit'} disabled={!inputValue.length} variant="primary">{t("search")}</Button> 
-            </form> 
+                <Button type={'submit'} variant="primary" className={styles.input_group_btn} disabled={!inputValue.length}>
+                    {t("search")}
+                </Button> 
+                <div className={styles.has_error_message}>
+                    <h1>{t("has_error")}</h1>
+                    <p>{t("has_error_detalis")}</p>
+                </div>
+            </div>
+        )
+    }
 
-            <div>
+    const onFavoriteToggle = (imdbID) => toggleFavorits(imdbID);
+
+    return (
+        <div className={styles.main}>
+            <div className={styles.search}>
+                    <h1 className={styles.title}>{t("title")}</h1>
+                    <p className={styles.search_text}>{t("main.search_detalis")}</p>
+                    <div className={styles.search_input_button}>
+                        <form onSubmit={getFilms} className={styles.form}>
+                            <InputGroup className={styles.input_group}>
+                                <Form.Control
+                                    aria-label="Default"
+                                    aria-describedby="inputGroup-sizing-default"
+                                    value={inputValue} 
+                                    placeholder={t("main.placeholder")}
+                                    onChange={({ target: { value }}) => setInputValue(value)} 
+                                    autoFocus
+                                />
+                            </InputGroup>
+                            <Button type={'submit'} variant="primary" className={styles.input_group_btn} disabled={!inputValue.length}>
+                                {t("search")}
+                            </Button> 
+                        </form> 
+                    </div>
+            </div>
+
+            <div className={styles.films_content}>
                 <div className={styles.films}> 
                     {isLoading &&  <Loader size={'s'} variant={'primary'} />}        
-                    {(!isLoading && !films) && <h1>{t('main.title')}</h1>}
+                    {/* {(!isLoading && !films) && <h1>{t('main.title')}</h1>} */}
                     {(!isLoading && films && films.length > 0) &&
                         films.map((el) => {
                             const isFavorite = Boolean(favoritFilms[el.imdbID]);
 
                             return (
-                                <CustomCard  
+                                <My_Card 
                                     key={el.imdbID}
                                     year={el.Year} 
                                     title={el.Title} 
                                     imdbID={el.imdbID}
                                     poster={el.Poster}
-                                    buttonText={t("main.details")}
+                                    addFavorite={t("film.add_favorite")}
                                     isFavorite={isFavorite}
                                     onFavoriteToggle={onFavoriteToggle}
                                 />
-                            )}
+                        )}
                     )}
                 </div>
             </ div>
