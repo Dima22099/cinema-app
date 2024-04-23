@@ -3,6 +3,9 @@
   --color-secondary: #5e5e5e;
   --background: #ffff;
   --background-image: url('/Background_main.png');
+
+  --input-background: #ccc;
+  --input-placeholder-color: white;
 }
 
 :root[data-theme="dark"] {
@@ -10,6 +13,9 @@
   --color-secondary: #A8AEBF;
   --background: #121829;
   --background-image: url('/Background_main.png');
+
+  --input-background: #0d2034;
+  --input-placeholder-color: #465068;
 }
 
 html, body {
