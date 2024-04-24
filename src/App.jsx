@@ -10,9 +10,7 @@ import './App.css'
 export const App = () => (
   <ThemeProvider>
     <FilmsContextProvider>
-        <div className="page">
-          <RouterProvider router={router} />
-        </div>
+        <RouterProvider router={router} />
     </FilmsContextProvider>
   </ThemeProvider>
 );

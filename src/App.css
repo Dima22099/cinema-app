@@ -1,11 +1,23 @@
 :root[data-theme="light"] {
-  --background-main: #ffff;
   --color-main: black;
+  --color-secondary: #5e5e5e;
+  --background: #ffff;
+  --background-image: url('/Background_main.png');
+
+  --input-background: #969494;
+  --input-placeholder-color: white;
+  --link-color: black;
 }
 
 :root[data-theme="dark"] {
-  --background-main: #222730;
   --color-main: white;
+  --color-secondary: #A8AEBF;
+  --background: #121829;
+  --background-image: url('/Background_main.png');
+
+  --input-background: #475069;
+  --input-placeholder-color: #465068;
+  --link-color: white;
 }
 
 html, body {
@@ -26,8 +38,6 @@ body {
     height: 100%;
 }
 
-.page {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+Main {
+  background-image: url(/Like.svg);
 }

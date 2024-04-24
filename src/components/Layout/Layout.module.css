@@ -1,16 +1,25 @@
-.navbar {
+.page {
     display: flex;
-    justify-content: space-around;
-    padding: 12px;
-    gap: 40px;
-    background-color: #c3aed6;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    min-height: 100%;
+    width: 100%;
+
+    /* border: 1px solid red; */
+    background: var(--background);
+    background-image: var(--background-image);
+    background-size: cover;
 }
 
-.tabs {
+.page__content {
+    width: 1270px;
+    margin: 0 auto;
+}
+
+.navbar {
     display: flex;
-    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
 }
 
 .settings {
@@ -20,6 +29,7 @@
 }
 
 .settings__languages {
+    color: var(--color-main);
     margin-bottom: 12px;
 }
 
@@ -45,5 +55,35 @@
 .content {
     flex: 1;
     padding: 12px;
-    background: var(--background-main);
+}
+
+.links {
+    display: flex;
+    gap: 48px;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--color-secondary);
+}
+
+.link__active {
+    color: var(--color-main);
+}
+
+.link__count {
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    color: var(--link-color);
+    scale: 1.2;
+    border-radius: 50%;
+    background-color: blueviolet;
+}
+
+.img__log_in {
+    margin-left: 10px;
 }
