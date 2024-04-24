@@ -5,8 +5,6 @@
 .main {
     text-align: center;
     color: var(--color-main);
-
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -22,9 +20,7 @@
 .search {
     display: flex;
     flex-direction: column;
-    margin-bottom: 150px;
-    border: 1px solid green;
-
+    margin-bottom: 150px;   
     text-align: left;
 }
 .search_text {
@@ -43,7 +39,7 @@
 
 .input_group_input {
     background: var(--input-background) !important;
-    color: white !important;
+    color: rgb(50, 49, 49) !important;
 }
 
 .input_group_input::placeholder {
@@ -74,10 +70,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* color: var(--color-main); */
-    /* gap: 60px; */
-    /* justify-content: center; */
-    /* margin-top: 30px; */
 }
 
 .has_error_message {

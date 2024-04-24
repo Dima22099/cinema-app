@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Api } from '../../api';
 import { FavoritFilms } from '../../context/';
-import { Loader, My_Card } from '../../components';
+import { Loader, CardFilm } from '../../components';
 
 import styles from './Main.module.css';
 
@@ -28,7 +28,6 @@ export const Main = () => {
             setIsLoading(true);
             const { data } = await Api.searchFilm(inputValue);
 
-            console.log('### data', data);
             setFilms(data.result.sort((a, b) => b.Year - a.Year));
         } catch(e) {
             setHasError(true);
@@ -40,24 +39,9 @@ export const Main = () => {
 
     if (hasError) {
         return (
-            <div>
-                <InputGroup className={styles.input_group}>
-                    <Form.Control
-                        aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default"
-                        value={inputValue}
-                        placeholder={t("main.placeholder")}
-                        onChange={({ target: { value }}) => setInputValue(value)}
-                        autoFocus
-                    />
-                </InputGroup>
-                <Button type={'submit'} variant="primary" className={styles.input_group_btn} disabled={!inputValue.length}>
-                    {t("search")}
-                </Button>
-                <div className={styles.has_error_message}>
-                    <h1>{t("has_error")}</h1>
-                    <p>{t("has_error_detalis")}</p>
-                </div>
+            <div className={styles.has_error_message}>
+                <h1>{t("has_error")}</h1>
+                <p>{t("has_error_detalis")}</p>
             </div>
         )
     }
@@ -99,7 +83,7 @@ export const Main = () => {
                             const isFavorite = Boolean(favoritFilms[el.imdbID]);
 
                             return (
-                                <My_Card
+                                <CardFilm
                                     key={el.imdbID}
                                     year={el.Year}
                                     title={el.Title}

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { FavoritFilms } from '../../context';
 import { Api } from '../../api';
-import { CustomCard } from '../../components'; 
+import { CardFilm } from '../../components'; 
 
 import styles from './Favorit.module.css';
 
@@ -32,27 +32,23 @@ export const Favorit = () => {
         toggleFavorits(imdbID);
         setAllFilmsFavorite(allFilmsFavorite.filter((el) => el.imdbID !== imdbID));
     };
-
+        console.log('allFilmsFavorite', allFilmsFavorite);
     return (
         <div className={styles.favorits}>
             {!allFilmsFavorite.length && <h1 className={styles.favorits__title}>{t("favorite.message")}</h1>}
             {allFilmsFavorite.map((el) => {  
                 const isFavorite = Boolean(favoritFilms[el.imdbID]);
                 return (
-                    <CustomCard  
+                    <CardFilm
                         key={el.imdbID}
-                        year={el.Year} 
                         title={el.Title} 
-                        imdbID={el.imdbID}
                         poster={el.Poster}
-                        buttonText={t("favorite.view_details")}
+                        imdbID={el.imdbID}
                         isFavorite={isFavorite}
-                        onFavoriteToggle={handleChecked}
+                        onFavoriteToggle={() => handleChecked(el.imdbID)}
                     />
-                )                
+                )
             })}
         </div>
     )
 };
-
-

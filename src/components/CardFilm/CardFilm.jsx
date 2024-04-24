@@ -2,18 +2,17 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import cn from 'classnames';
 
-import styles from './My_Card.module.css';
+import styles from './CardFilm.module.css';
 
 
-export const My_Card = ({ title, poster, imdbID, isFavorite, onFavoriteToggle }) => {
+export const CardFilm = ({ title, poster, imdbID, isFavorite, onFavoriteToggle, }) => {
     const { t } = useTranslation();
 
     const blurStyles = {
         background: `url(${poster})`,
         backgroundSize: 'contain',
-        filter: 'blur(400px)'
+        filter: 'blur(60px)'
     };
-
     return (
         <div className={styles.card} key={imdbID}>
             <div className={styles.blur_background} style={blurStyles} />

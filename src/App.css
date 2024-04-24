@@ -4,8 +4,9 @@
   --background: #ffff;
   --background-image: url('/Background_main.png');
 
-  --input-background: #ccc;
+  --input-background: #969494;
   --input-placeholder-color: white;
+  --link-color: black;
 }
 
 :root[data-theme="dark"] {
@@ -14,8 +15,9 @@
   --background: #121829;
   --background-image: url('/Background_main.png');
 
-  --input-background: #0d2034;
+  --input-background: #475069;
   --input-placeholder-color: #465068;
+  --link-color: white;
 }
 
 html, body {
