@@ -5,7 +5,7 @@ import cn from 'classnames';
 import styles from './CardFilm.module.css';
 
 
-export const CardFilm = ({ title, poster, imdbID, isFavorite, onFavoriteToggle, }) => {
+export const CardFilm = ({ title, poster, id, isFavorite, onFavoriteToggle, }) => {
     const { t } = useTranslation();
 
     const blurStyles = {
@@ -14,13 +14,13 @@ export const CardFilm = ({ title, poster, imdbID, isFavorite, onFavoriteToggle, 
         filter: 'blur(60px)'
     };
     return (
-        <div className={styles.card} key={imdbID}>
+        <div className={styles.card} key={id}>
             <div className={styles.blur_background} style={blurStyles} />
 
             <div className={styles.card__content}>
                 <img src={poster} className={styles.card__image} alt='film poster' />
 
-                <NavLink to={`/film/${imdbID}`} className={styles.card__title}>
+                <NavLink to={`/film/${id}`} className={styles.card__title}>
                     {title}
                 </NavLink>
 

@@ -17,7 +17,8 @@ export const Favorit = () => {
     useEffect(() => {
         const getFavoriteFilms = async () => {
             const promises = Object.keys(favoritFilms).map(async (el) => {
-                const { data } = await Api.getFilmData(el);
+                const { data } = await Api.getFilmData(el); ////////////////////////??????
+                console.log('data $$$', data);
                 return data;
             });
             
@@ -32,7 +33,7 @@ export const Favorit = () => {
         toggleFavorits(imdbID);
         setAllFilmsFavorite(allFilmsFavorite.filter((el) => el.imdbID !== imdbID));
     };
-        console.log('allFilmsFavorite', allFilmsFavorite);
+        // console.log('allFilmsFavorite', allFilmsFavorite);
     return (
         <div className={styles.favorits}>
             {!allFilmsFavorite.length && <h1 className={styles.favorits__title}>{t("favorite.message")}</h1>}

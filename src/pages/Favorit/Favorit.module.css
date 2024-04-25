@@ -5,6 +5,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    color: var(--color-main);
 }
 
 .favorits__title {

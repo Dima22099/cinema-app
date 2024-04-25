@@ -27,8 +27,8 @@ export const Main = () => {
 
             setIsLoading(true);
             const { data } = await Api.searchFilm(inputValue);
-
-            setFilms(data.result.sort((a, b) => b.Year - a.Year));
+            setFilms(data.results)
+            // console.log('data ###', data);
         } catch(e) {
             setHasError(true);
         } finally {
@@ -46,7 +46,7 @@ export const Main = () => {
         )
     }
 
-    const onFavoriteToggle = (imdbID) => toggleFavorits(imdbID);
+    const onFavoriteToggle = (id) => toggleFavorits(id);
 
     return (
         <div className={styles.main}>
@@ -80,17 +80,15 @@ export const Main = () => {
                     {/* {(!isLoading && !films) && <h1>{t('main.title')}</h1>} */}
                     {(!isLoading && films && films.length > 0) &&
                         films.map((el) => {
-                            const isFavorite = Boolean(favoritFilms[el.imdbID]);
-
+                            const isFavorite = Boolean(favoritFilms[el.id]);
+                            const URL_Poster = 'https://image.tmdb.org/t/p/w500/';
                             return (
                                 <CardFilm
-                                    key={el.imdbID}
-                                    year={el.Year}
-                                    title={el.Title}
-                                    imdbID={el.imdbID}
-                                    poster={el.Poster}
+                                    key={el.id}
+                                    title={el.title}
+                                    poster={`${URL_Poster}${el.poster_path}`}
                                     isFavorite={isFavorite}
-                                    onFavoriteToggle={() => onFavoriteToggle(el.imdbID)}
+                                    onFavoriteToggle={() => onFavoriteToggle(el.id)}
                                 />
                         )}
                     )}

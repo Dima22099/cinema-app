@@ -19,7 +19,7 @@
 }
 
 .card__content {
-    /* border: 1px solid red; */
+    max-width: 266px;
     position: relative;
     z-index: 2;
     padding: 8px;

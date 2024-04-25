@@ -5,17 +5,17 @@ export const FavoritFilms = createContext({});
 export const FilmsContextProvider = ({ children }) => {
   const [favoritFilms, setFavoritFilms] = useState(JSON.parse(localStorage.getItem('favoriteFilms')) ?? {});
    
-  const toggleFavorits = (filmId) => {
-    if (favoritFilms[filmId]) {
+  const toggleFavorits = (id) => {
+    if (favoritFilms[id]) {
       const temp = {...favoritFilms};
-      delete temp[filmId]; 
+      delete temp[id]; 
 
       localStorage.setItem('favoriteFilms', JSON.stringify(temp));
       return setFavoritFilms(temp); 
     }
 
-    setFavoritFilms((films) => ({ ...films, [filmId]: true }));
-    localStorage.setItem('favoriteFilms', JSON.stringify({ ...favoritFilms, [filmId]: true }))
+    setFavoritFilms((films) => ({ ...films, [id]: true }));
+    localStorage.setItem('favoriteFilms', JSON.stringify({ ...favoritFilms, [id]: true }))
   };
 
   return (

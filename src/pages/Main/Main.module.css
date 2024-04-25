@@ -39,7 +39,7 @@
 
 .input_group_input {
     background: var(--input-background) !important;
-    color: rgb(50, 49, 49) !important;
+    color: var(--color-main) !important;
 }
 
 .input_group_input::placeholder {

@@ -13,10 +13,10 @@ import cn from 'classnames';
 
 export const Film = () => {
     const { t } = useTranslation();
-    const { favoritFilms, toggleFavorits } = useContext(FavoritFilms)
+    const { favoritFilms, toggleFavorits } = useContext(FavoritFilms);
 
-    const { filmId } = useParams();
-
+    const { id } = useParams();
+    console.log('id', id);
     const [isLoading, setIsLoading] = useState(false);
     const [filmData, setFilmData] = useState(null);
     const [hasError, setHasError] = useState(false);
@@ -24,7 +24,8 @@ export const Film = () => {
     const getFilm = useCallback(async () => {
         try {
             setIsLoading(true);
-            const { data } = await Api.getFilmData(filmId);
+            const { data } = await Api.getFilmData(id);
+            console.log('data.result123 ###', data);
             setFilmData(data);
         } catch (e) {
             setHasError(true);
@@ -53,9 +54,8 @@ export const Film = () => {
         return <h1 className={styles.loader}>{t("has_error")} ...</h1>
     }
 
-    const isFavorite = Boolean(favoritFilms[filmId]);
-    const relesedDate = new Date(filmData.Released).toLocaleDateString("ru");
-
+    const isFavorite = Boolean(favoritFilms[id]);
+    const URL_Poster = 'https://image.tmdb.org/t/p/w500/';
     return (
         <>
             <div className={styles.link__wrapper}>
@@ -65,21 +65,22 @@ export const Film = () => {
                 </NavLink>
             </div>
             <div className={styles.poster__wrapper}>
-                    <CardFilm
-                        title={filmData.Title}
-                        poster={filmData.Poster}
-                        imdbID={filmData.imdbID}
-                        isFavorite={isFavorite}
-                        onFavoriteToggle={() => toggleFavorits(filmId)}
-                        className={cn(styles.card__favorite, { [styles.card__favorite__checked]: isFavorite })}
-                     />
+                <CardFilm
+                    key={filmData.id} 
+                    title={filmData.title}
+                    poster={`${URL_Poster}${filmData.poster_path}`}
+                    // popularity={filmData.popularity}
+                    isFavorite={isFavorite}
+                    onFavoriteToggle={() => toggleFavorits(filmData.id)}
+                    className={cn(styles.card__favorite, { [styles.card__favorite__checked]: isFavorite })}
+                    />
                 <div className={styles.film}>
                     <p className={styles.film__detail}>
-                        <span>{t("film.title")}: {filmData.Title}</span><br />
+                        <span>{t("film.title")}: {filmData.title}</span><br />
                         <span>{t("film.year")}: {filmData.Year}</span><br />
                         <span>{t("film.actors")}: {filmData.Actors}</span><br />
                         <span>{t("film.plot")}: {filmData.Plot}</span><br />
-                        <span>{t("film.relesed")}: {relesedDate}</span><br />
+                        {/* <span>{t("film.relesed")}: {relesedDate}</span><br /> */}
                         <span>{t("film.runtime")}: {filmData.Runtime}</span><br />
                         <span>{t("film.imbd_rating")}: {filmData.imdbRating}</span><br />
                     </p>
