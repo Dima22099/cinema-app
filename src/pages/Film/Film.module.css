@@ -1,9 +1,5 @@
 .spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 200px;
-    gap: 20px;
+    margin: 0 auto;
 }
 
 .loader {
@@ -50,15 +46,11 @@
     color: var(--color-main);
 }
 
+.film__detail > *:last-child { 
+    /* border: 1px solid red ; */
+}
+
 .film > * {
-    padding: 20px;
-}
-
-.toggle_btn {
-    margin-top: 20px;
-}
-
-.toggle_btn > * {
-    width: 100%;
-}
+    padding: 10px;
+} 
 

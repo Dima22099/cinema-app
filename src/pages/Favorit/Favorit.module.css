@@ -1,13 +1,24 @@
-
-.favorits {
-    display: flex;
-    gap: 56px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+.favorits_title {
     color: var(--color-main);
 }
 
-.favorits__title {
+.favorits {
+    display: flex;
+    gap: 25px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.spinner {
     margin: 0 auto;
+}
+
+.name_page {
+    font-family: Poppins;
+    font-weight: 600;
+    line-height: 80px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: var(--color-main);
 }

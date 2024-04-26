@@ -19,11 +19,12 @@
 }
 
 .card__content {
-    max-width: 266px;
+    display: flex;
+    flex-direction: column;
+    width: 266px;
     position: relative;
     z-index: 2;
-    padding: 8px;
-    
+    padding: 8px;    
 }
 
 .card__image {
@@ -55,51 +56,3 @@
 .card__favorite__checked {
     color: #37d8a7;
 }
-
-
-
-
-
-
-.card__star {
-    display: flex;
-    justify-content: space-evenly;
-    cursor: pointer;
-    color:blueviolet;
-    padding: 0;
-    margin: 0;
-}
-
-.card__star__checked {
-    color: #37D8A7;
-    /* background-color: #37D8A7;
-    opacity: 0.5; */
-}
-
-.card_content_bottom {
-    width: 150px;
-    /* height: 80px; */
-    padding: 8px 0 0 0;
-    /* display: flex; */
-    gap: 16px;
-}
-
-.card__poster {
-    width: 266px;
-    height: 400px;
-    border-radius: 8px;
-
-    /* width: 266px;
-    height: 400px; */
-}
-
-
-.card__content__year {
-    /* display: block; */
-    margin: 0;
-}
-
-.card__content__link {
-    margin: 0 auto;
-}
-

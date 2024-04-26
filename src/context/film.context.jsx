@@ -13,7 +13,7 @@ export const FilmsContextProvider = ({ children }) => {
       localStorage.setItem('favoriteFilms', JSON.stringify(temp));
       return setFavoritFilms(temp); 
     }
-
+    
     setFavoritFilms((films) => ({ ...films, [id]: true }));
     localStorage.setItem('favoriteFilms', JSON.stringify({ ...favoritFilms, [id]: true }))
   };

@@ -24,11 +24,15 @@ export default {
             plot: "Сюжет",
             relesed: "Выпушен",
             runtime: "Продолжительность",
+            runt_min: 'минут',
             imbd_rating: "Рейтинг фильма",
+            origin_country: "Страна(ы) производства", 
+            genres: "Жанр(ы)",
         },
         favorite: {
             message: "У вас еще нет избранных фильмов.",
             view_details: "Посмотреть подробности",
+            favorits_title: "Избранное",
         },
         layout: {
             main: "Поиск фильмов",
@@ -36,6 +40,10 @@ export default {
             language: "Язык",
             theme: "Сменить тему",
             log_in: "Войти",
+        }, 
+        Card: {
+            film_poster: 'Нет картинки(((',
+            rating: "Рейтинг",
         }
     }
 };

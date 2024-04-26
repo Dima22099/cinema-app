@@ -5,7 +5,6 @@ export default {
         has_error: "Nothing found",
         loader: "Loader",
         
-        
         main: {
             title: "Enter movie title",
             placeholder: "search films",
@@ -23,11 +22,15 @@ export default {
             plot: "Plot",
             relesed: "Relesed",
             runtime: "Runtime",
+            runt_min: 'minutes',
             imbd_rating: "Rating",
+            origin_country: "origin_country",
+            genres: "genres",
         },
         favorite: {
             message: "You don't have any favorite movies yet.",
             view_details: "View details",
+            favorits_title: "Favorits",
         },
         layout: {
             main: "Search film",
@@ -35,6 +38,10 @@ export default {
             language: "language",
             theme: "сhange theme",
             log_in: "Log in",
+        },
+        Card: {
+            film_poster: 'No image',
+            rating: "Rating",
         }
     }
 };

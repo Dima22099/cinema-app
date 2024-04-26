@@ -1,12 +1,11 @@
 import { useEffect, useState, createContext } from 'react';
 
-
 export const ThemeContext = createContext({});
 
 const themes = {
   dark: 'dark',
   light: 'light',
-}
+};
 
 const getTheme = () => {
   const theme = `${window?.localStorage?.getItem('theme')}`

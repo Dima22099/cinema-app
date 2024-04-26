@@ -39,7 +39,6 @@ export const Layout = () => {
                 <option value={'ru'}>
                   {"🇷🇺 RU"}
                 </option>
-
                 <option value={'en'}>
                   {"🏴󠁧󠁢󠁥󠁮󠁧󠁿 EN"}
                 </option>
