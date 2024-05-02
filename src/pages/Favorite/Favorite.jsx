@@ -30,7 +30,6 @@ export const Favorite = () => {
         getFavoriteFilms();
     }, []);
 
-
     return (
         <>
             <h1 className={styles.title}>{t("favorite.title")}</h1>
@@ -43,7 +42,7 @@ export const Favorite = () => {
                     ? <h1 className={styles.Favorites__title}>{t("favorite.message")}</h1>
                     : (allFilmsFavorite.map((el) => {  
                         const isFavorite = Boolean(favoriteFilms[el.id]);
-                        const releaseDate = new Date(el.releaseDate).toLocaleDateString("ru");
+                        const releaseDate = new Date(el.release_date).toLocaleDateString("ru");
                         return (
                             <CardFilm
                                 key={el.id}

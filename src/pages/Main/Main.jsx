@@ -79,7 +79,7 @@ export const Main = () => {
                     {(!isLoading && !films) && <h1 className={styles.film_search}>{t('main.title')}</h1>}
                     {(!isLoading && films && films.length > 0) && films.map((el) => {
                         const isFavorite = Boolean(favoriteFilms[el.id]);
-                        const releaseDate = new Date(el.releaseDate).toLocaleDateString("ru");
+                        const releaseDate = new Date(el.release_date).toLocaleDateString("ru");
                     return (
                         <CardFilm
                             key={el.id}

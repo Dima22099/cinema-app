@@ -51,9 +51,8 @@ export const Film = () => {
     if (hasError) {
         return <h1 className={styles.loader}>{t("has_error")} ...</h1>
     }
-
     const isFavorite = Boolean(favoriteFilms[id]);
-    const releaseDate = new Date(filmData.releaseDate).toLocaleDateString("ru");
+    const releaseDate = new Date(filmData.release_date).toLocaleDateString("ru");
     const rating = filmData.vote_average.toFixed(1);
     return (
         <>

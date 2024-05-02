@@ -20,7 +20,7 @@ export const CardFilm = ({ title,  poster, id, rating, releaseDate, isFavorite, 
         <div className={styles.card} key={id}>
             <div className={styles.blur_background} style={blurStyles} />
             <div className={styles.card__content}>
-                <img src={isPoster ? poster : placeholderImage} className={styles.card__image} alt={t("Card.noPoster")} />
+                <img src={isPoster ? poster : placeholderImage} className={styles.card__image} alt={t("card.noPoster")} />
                 {isLinkEnabled ? (
                     <NavLink to={`/film/${id}`} className={styles.card__title}>
                         <span>{`${t("film.year")}: ${releaseDate}`}</span>
