@@ -53,7 +53,7 @@ export const Film = () => {
     }
 
     const isFavorite = Boolean(favoriteFilms[id]);
-    const release_Date = new Date(filmData.release_date).toLocaleDateString("ru");
+    const releaseDate = new Date(filmData.releaseDate).toLocaleDateString("ru");
     const rating = filmData.vote_average.toFixed(1);
     return (
         <>
@@ -67,7 +67,7 @@ export const Film = () => {
                 <CardFilm
                     key={filmData.id} 
                     isLinkEnabled={false}
-                    release_date={release_Date}
+                    releaseDate={releaseDate}
                     rating={rating}
                     title={filmData.title}
                     poster={Api.getPosterURL(filmData.poster_path)}
@@ -78,7 +78,7 @@ export const Film = () => {
                 <div className={styles.film}>
                     <p className={styles.film__detail}>
                         {filmData.title && <span>{t("film.title")}: {filmData.title}</span>}
-                        {release_Date && <span>{t("film.year")}: {release_Date}</span>}
+                        {releaseDate && <span>{t("film.year")}: {releaseDate}</span>}
                         {filmData.production_countries && <span>{t("film.origin_country")}: {filmData.production_countries.map(e => e.name)}</span>}
                         {rating && <span>{t("film.imbd_rating")}: {rating}</span>}
                         {filmData.Actors && <span>{t("film.actors")}: {filmData.Actors}</span>}

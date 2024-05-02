@@ -33,8 +33,8 @@ export const Favorite = () => {
 
     return (
         <>
-            <h1 className={styles.favorites_title}>{t("favorite.favorites_title")}</h1>
-            <div className={styles.Favorites}>
+            <h1 className={styles.title}>{t("favorite.title")}</h1>
+            <div className={styles.favorites}>
                 {(!allFilmsFavorite.length && isLoading) ? 
                     (<div className={styles.spinner}>
                         <Loader variant="primary" size={'s'}/>
@@ -43,7 +43,7 @@ export const Favorite = () => {
                     ? <h1 className={styles.Favorites__title}>{t("favorite.message")}</h1>
                     : (allFilmsFavorite.map((el) => {  
                         const isFavorite = Boolean(favoriteFilms[el.id]);
-                        const release_Date = new Date(el.release_date).toLocaleDateString("ru");
+                        const releaseDate = new Date(el.releaseDate).toLocaleDateString("ru");
                         return (
                             <CardFilm
                                 key={el.id}
@@ -51,7 +51,7 @@ export const Favorite = () => {
                                 id={el.id}
                                 title={el.title} 
                                 rating={el.vote_average.toFixed(1)}
-                                release_date={release_Date}
+                                releaseDate={releaseDate}
                                 poster={Api.getPosterURL(el.poster_path)}
                                 isFavorite={isFavorite}
                                 onFavoriteToggle={() => toggleFavorites(el.id)}

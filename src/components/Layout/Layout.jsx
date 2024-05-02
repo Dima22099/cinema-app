@@ -3,10 +3,10 @@ import { Outlet, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Form from 'react-bootstrap/Form';
 import { Translate, MoonStars, BrightnessHigh } from 'react-bootstrap-icons';
+import cn from 'classnames';
 
 import { ThemeContext, FavoriteFilms } from '../../context';
 import styles from './Layout.module.css';
-import cn from 'classnames';
 
 
 export const Layout = () => {
@@ -73,7 +73,7 @@ export const Layout = () => {
 
                 <NavLink to={'/Log_in'} className={getNavLinkClass}>
                   {t("layout.log_in")}
-                    <img className={styles.img__log_in} src={"/Login 3.svg"} />
+                    <img className={styles.img__log_in} src={"/login.svg"} />
                 </NavLink>
             </div>
           </div>

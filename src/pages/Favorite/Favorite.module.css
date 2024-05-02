@@ -1,8 +1,8 @@
-.favorites_title {
+.title {
     color: var(--color-main);
 }
 
-.Favorites {
+.favorites {
     display: flex;
     gap: 25px;
     flex-direction: row;

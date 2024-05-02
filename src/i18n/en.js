@@ -3,13 +3,14 @@ export default {
         search: "search",
         title: "Search",
         has_error: "Nothing found",
+        has_error_details: "Try changing your query or entering a more precise movie name",
         loader: "Loader",
         
         main: {
             title: "Enter movie title",
             placeholder: "search films",
             details: "view details",
-            search_details: "Enter the name of a movie, cartoon or cartoon to search and add to favorites.",
+            searchDetails: "Enter the name of a movie, cartoon or cartoon to search and add to favorites.",
         },
         film: {
             remove: "Remove from favorites",
@@ -29,8 +30,7 @@ export default {
         },
         favorite: {
             message: "You don't have any favorite movies yet.",
-            view_details: "View details",
-            favorites_title: "Favorites",
+            title: "Favorites",
         },
         layout: {
             main: "Search film",
@@ -39,8 +39,8 @@ export default {
             theme: "change theme",
             log_in: "Log in",
         },
-        Card: {
-            film_poster: 'No image',
+        card: {
+            noPoster: 'No image',
             rating: "Rating",
         }
     }

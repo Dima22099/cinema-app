@@ -12,9 +12,9 @@ export const Api = {
 };          
 
 axios.interceptors.request.use((config) => {
-config.params = {
-  ...config.params,
-  language: i18n.language,
+  config.params = {
+    ...config.params,
+    language: i18n.language,
 };
   config.headers = { 
     accept: 'application/json',

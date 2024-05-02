@@ -5,7 +5,7 @@ import cn from 'classnames';
 import styles from './CardFilm.module.css';
 
 
-export const CardFilm = ({ title,  poster, id, rating, release_date, isFavorite, onFavoriteToggle, isLinkEnabled }) => {
+export const CardFilm = ({ title,  poster, id, rating, releaseDate, isFavorite, onFavoriteToggle, isLinkEnabled }) => {
     const { t } = useTranslation();
 
     const blurStyles = {
@@ -13,24 +13,24 @@ export const CardFilm = ({ title,  poster, id, rating, release_date, isFavorite,
         backgroundSize: 'contain',
         filter: 'blur(60px)'
     };
-    const placeholderImage = '/no-image-svgrepo-com.svg'; 
+    const placeholderImage = '/noImage.svg'; 
     const isPoster = poster.endsWith('jpg') || poster.endsWith('JPEG');
     
     return (
         <div className={styles.card} key={id}>
             <div className={styles.blur_background} style={blurStyles} />
             <div className={styles.card__content}>
-                <img src={isPoster ? poster : placeholderImage} className={styles.card__image} alt={t("Card.film_poster")} />
+                <img src={isPoster ? poster : placeholderImage} className={styles.card__image} alt={t("Card.noPoster")} />
                 {isLinkEnabled ? (
                     <NavLink to={`/film/${id}`} className={styles.card__title}>
-                        <span>{`${t("film.year")}: ${release_date}`}</span>
-                        <span>{`${t("Card.rating")}: ${rating}`}</span>
+                        <span>{`${t("film.year")}: ${releaseDate}`}</span>
+                        <span>{`${t("card.rating")}: ${rating}`}</span>
                         {title}
                     </NavLink>
                 ) : (
                     <div className={styles.card__title}>
-                        <span>{`${t("film.year")}: ${release_date}`}</span>
-                        <span>{`${t("Card.rating")}: ${rating}`}</span>
+                        <span>{`${t("film.year")}: ${releaseDate}`}</span>
+                        <span>{`${t("card.rating")}: ${rating}`}</span>
                         {title}
                     </div>
                 )}

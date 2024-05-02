@@ -27,7 +27,7 @@ export const Main = () => {
 
             setIsLoading(true);
             const { data } = await Api.searchFilm(inputValue);
-            setFilms(data.results.sort((a, b) => b.vote_average -a.vote_average));
+            setFilms(data.results.sort((a, b) => b.vote_average - a.vote_average));
         } catch(e) {
             setHasError(true);
         } finally {
@@ -51,7 +51,7 @@ export const Main = () => {
         <div className={styles.main}>
             <div className={styles.search}>
                 <h1 className={styles.title}>{t("title")}</h1>
-                <p className={styles.search_text}>{t("main.search_details")}</p>
+                <p className={styles.search_text}>{t("main.searchDetails")}</p>
                 <div className={styles.search_input_button}>
                 <form onSubmit={getFilms} className={styles.form}>
                 <InputGroup className={styles.input_group}>
@@ -69,7 +69,6 @@ export const Main = () => {
                     type={'submit'} 
                     title={t("search")} 
                     disabled={!inputValue.length} 
-                    className={styles.input_group_btn} 
                 />
                 </form>
                 </div>
@@ -80,7 +79,7 @@ export const Main = () => {
                     {(!isLoading && !films) && <h1 className={styles.film_search}>{t('main.title')}</h1>}
                     {(!isLoading && films && films.length > 0) && films.map((el) => {
                         const isFavorite = Boolean(favoriteFilms[el.id]);
-                        const release_Date = new Date(el.release_date).toLocaleDateString("ru");
+                        const releaseDate = new Date(el.releaseDate).toLocaleDateString("ru");
                     return (
                         <CardFilm
                             key={el.id}
@@ -88,7 +87,7 @@ export const Main = () => {
                             id={el.id}
                             title={el.title}
                             rating={el.vote_average.toFixed(1)}
-                            release_date={release_Date}
+                            releaseDate={releaseDate}
                             poster={Api.getPosterURL(el.poster_path)}
                             isFavorite={isFavorite}
                             onFavoriteToggle={() => onFavoriteToggle(el.id)}
