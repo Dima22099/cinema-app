@@ -5,7 +5,7 @@ import cn from 'classnames';
 import styles from './CardFilm.module.css';
 
 
-export const CardFilm = ({ title,  poster, id, rating, release_date, isFavorite, onFavoriteToggle, isLinkEnabled}) => {
+export const CardFilm = ({ title,  poster, id, rating, release_date, isFavorite, onFavoriteToggle, isLinkEnabled }) => {
     const { t } = useTranslation();
 
     const blurStyles = {
@@ -23,14 +23,14 @@ export const CardFilm = ({ title,  poster, id, rating, release_date, isFavorite,
                 <img src={isPoster ? poster : placeholderImage} className={styles.card__image} alt={t("Card.film_poster")} />
                 {isLinkEnabled ? (
                     <NavLink to={`/film/${id}`} className={styles.card__title}>
-                        <span>{`${t("film.year")}: ${release_date}`}</span><br />
-                        <span>{`${t("Card.rating")}: ${rating}`}</span><br />
+                        <span>{`${t("film.year")}: ${release_date}`}</span>
+                        <span>{`${t("Card.rating")}: ${rating}`}</span>
                         {title}
                     </NavLink>
                 ) : (
                     <div className={styles.card__title}>
-                        <span>{`${t("film.year")}: ${release_date}`}</span><br />
-                        <span>{`${t("Card.rating")}: ${rating}`}</span><br />
+                        <span>{`${t("film.year")}: ${release_date}`}</span>
+                        <span>{`${t("Card.rating")}: ${rating}`}</span>
                         {title}
                     </div>
                 )}

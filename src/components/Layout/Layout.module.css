@@ -3,7 +3,7 @@
     flex-direction: column;
     min-height: 100%;
     width: 100%;
-    
+
     background: var(--background);
     background-image: var(--background-image);
     background-size: cover;
@@ -37,6 +37,12 @@
     margin-top: 5px
 }
 
+.form :hover {
+    max-width: 100px;
+    margin-top: 5px;
+    border: 2px solid red;
+}
+
 .switch {
     scale: 1.4;
 }
@@ -49,6 +55,19 @@
 .theme_toggler__icon {
     text-align: center;
     margin-bottom: 12px;
+    scale: 0.6;
+}
+
+.moonStars {
+    border-radius: 50px;
+    background-color: rgb(65, 65, 234);
+    opacity: 0.9;
+}
+
+.brightnessHigh{
+    border-radius: 50px;
+    background-color: rgb(247, 247, 133);
+    opacity: 0.7;
 }
 
 .content {
@@ -59,6 +78,12 @@
 .links {
     display: flex;
     gap: 48px;
+}
+
+.links :hover {
+    background-color: #0d6efd;
+    opacity: 0.9;
+    border-radius: 4px;
 }
 
 .link {

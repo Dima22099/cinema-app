@@ -1,0 +1,10 @@
+.button {
+    border-radius: 12px;
+    background: #7B6EF6;
+}
+
+.button_title {
+    font-size: 29px;
+    font-weight: 400;
+    font-family: Poppins;
+}

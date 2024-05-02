@@ -20,7 +20,7 @@
 .search {
     display: flex;
     flex-direction: column;
-    margin-bottom: 150px;   
+    margin-bottom: 75px;   
     text-align: left;
 }
 .search_text {
@@ -37,22 +37,20 @@
     height: 64px;
 }
 
+
 .input_group_input {
     background: var(--input-background) !important;
     color: var(--color-main) !important;
 }
 
-.input_group_input::placeholder {
-    color: var(--input-placeholder-color) !important;
+.input_group :hover {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
 }
 
-.input_group_btn {
-    padding: 0;
-    margin: 0;
-    width: 144.6px;
-    height: 64px;
-    border-radius: 12px !important;
-    background: #7b6ef6 !important;
+.input_group_input::placeholder {
+    color: var(--input-placeholder-color) !important;
 }
 
 .form {
@@ -73,8 +71,7 @@
 
 }
 
-.spiner  {
-    /* margin: 0 auto; */
+.spinner  {
     margin-left: 600px;
 }
 

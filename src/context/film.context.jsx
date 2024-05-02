@@ -1,26 +1,26 @@
 import { createContext, useState } from 'react';
 
-export const FavoritFilms = createContext({});
+export const FavoriteFilms = createContext({});
 
 export const FilmsContextProvider = ({ children }) => {
-  const [favoritFilms, setFavoritFilms] = useState(JSON.parse(localStorage.getItem('favoriteFilms')) ?? {});
+  const [favoriteFilms, setFavoriteFilms] = useState(JSON.parse(localStorage.getItem('favoriteFilms')) ?? {});
    
-  const toggleFavorits = (id) => {
-    if (favoritFilms[id]) {
-      const temp = {...favoritFilms};
+  const toggleFavorites = (id) => {
+    if (favoriteFilms[id]) {
+      const temp = {...favoriteFilms};
       delete temp[id]; 
 
       localStorage.setItem('favoriteFilms', JSON.stringify(temp));
-      return setFavoritFilms(temp); 
+      return setFavoriteFilms(temp); 
     }
-    
-    setFavoritFilms((films) => ({ ...films, [id]: true }));
-    localStorage.setItem('favoriteFilms', JSON.stringify({ ...favoritFilms, [id]: true }))
+
+    setFavoriteFilms((films) => ({ ...films, [id]: true }));
+    localStorage.setItem('favoriteFilms', JSON.stringify({ ...favoriteFilms, [id]: true }))
   };
 
   return (
-    <FavoritFilms.Provider value={{ favoritFilms, toggleFavorits }}>
+    <FavoriteFilms.Provider value={{ favoriteFilms, toggleFavorites }}>
       {children}
-    </FavoritFilms.Provider>
+    </FavoriteFilms.Provider>
   );
 };

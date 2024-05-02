@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
 
 import { Api } from '../../api';
-import { FavoritFilms } from '../../context/';
-import { Loader, CardFilm } from '../../components';
+import { FavoriteFilms } from '../../context/';
+import { Loader, CardFilm, Button } from '../../components';
 
 import styles from './Main.module.css';
 
@@ -18,7 +18,7 @@ export const Main = () => {
     const [films, setFilms] = useState(null);
     const [hasError, setHasError] = useState(false);
 
-    const { favoritFilms, toggleFavorits  } = useContext(FavoritFilms);
+    const { favoriteFilms, toggleFavorites  } = useContext(FavoriteFilms);
 
     const getFilms = async (e) => {
         setFilms(null);
@@ -27,7 +27,7 @@ export const Main = () => {
 
             setIsLoading(true);
             const { data } = await Api.searchFilm(inputValue);
-            setFilms(data.results);
+            setFilms(data.results.sort((a, b) => b.vote_average -a.vote_average));
         } catch(e) {
             setHasError(true);
         } finally {
@@ -40,21 +40,20 @@ export const Main = () => {
         return (
             <div className={styles.has_error_message}>
                 <h1>{t("has_error")}</h1>
-                <p>{t("has_error_detalis")}</p>
+                <p>{t("has_error_details")}</p>
             </div>
         )
     }
 
-    const onFavoriteToggle = (id) => toggleFavorits(id);
+    const onFavoriteToggle = (id) => toggleFavorites(id);
 
     return (
         <div className={styles.main}>
             <div className={styles.search}>
-                <h1 className={styles.title}>{t("search")}</h1>
-                <p className={styles.search_text}>{t("main.search_detalis")}</p>
+                <h1 className={styles.title}>{t("title")}</h1>
+                <p className={styles.search_text}>{t("main.search_details")}</p>
                 <div className={styles.search_input_button}>
                 <form onSubmit={getFilms} className={styles.form}>
-                {/* TODO: удалить react-bootstrap и использовать свои кастомыне компоненеты */}
                 <InputGroup className={styles.input_group}>
                     <Form.Control
                         aria-label="Default"
@@ -66,20 +65,22 @@ export const Main = () => {
                         autoFocus
                     />
                 </InputGroup>
-                <Button type={'submit'} variant="primary" className={styles.input_group_btn} disabled={!inputValue.length}>
-                    {t("search")}
-                </Button>
+                <Button 
+                    type={'submit'} 
+                    title={t("search")} 
+                    disabled={!inputValue.length} 
+                    className={styles.input_group_btn} 
+                />
                 </form>
                 </div>
             </div>
             <div className={styles.films_content}>
                 <div className={styles.films}>
-                    {isLoading && <div className={styles.spiner}><Loader size={'s'} variant={'primary'}/></div>}
+                    {isLoading && <div className={styles.spinner}><Loader size={'s'} variant={'primary'}/></div>}
                     {(!isLoading && !films) && <h1 className={styles.film_search}>{t('main.title')}</h1>}
-                    {(!isLoading && films && films.length > 0) && films.sort((a, b) => b.vote_average -a.vote_average).map((el) => {
-                        const isFavorite = Boolean(favoritFilms[el.id]);
-                        const URL_Poster = 'https://image.tmdb.org/t/p/w500/';
-                        const relesedDate = new Date(el.release_date).toLocaleDateString("ru");
+                    {(!isLoading && films && films.length > 0) && films.map((el) => {
+                        const isFavorite = Boolean(favoriteFilms[el.id]);
+                        const release_Date = new Date(el.release_date).toLocaleDateString("ru");
                     return (
                         <CardFilm
                             key={el.id}
@@ -87,8 +88,8 @@ export const Main = () => {
                             id={el.id}
                             title={el.title}
                             rating={el.vote_average.toFixed(1)}
-                            release_date={relesedDate}
-                            poster={`${URL_Poster}${el.poster_path}`}
+                            release_date={release_Date}
+                            poster={Api.getPosterURL(el.poster_path)}
                             isFavorite={isFavorite}
                             onFavoriteToggle={() => onFavoriteToggle(el.id)}
                         />

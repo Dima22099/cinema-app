@@ -46,8 +46,15 @@
     color: var(--color-main);
 }
 
-.film__detail > *:last-child { 
-    /* border: 1px solid red ; */
+.film__detail { 
+    display: flex;
+    flex-direction: column;
+}
+
+.film__detail > :last-child {
+    border-top: 3px solid grey;
+    border-bottom: 3px solid grey;
+
 }
 
 .film > * {

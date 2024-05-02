@@ -9,7 +9,7 @@ export default {
             title: "Enter movie title",
             placeholder: "search films",
             details: "view details",
-            search_detalis: "Enter the name of a movie, cartoon or cartoon to search and add to favorites.",
+            search_details: "Enter the name of a movie, cartoon or cartoon to search and add to favorites.",
         },
         film: {
             remove: "Remove from favorites",
@@ -20,7 +20,7 @@ export default {
             year: "Year of issue",
             actors: "Actors",
             plot: "Plot",
-            relesed: "Relesed",
+            released: "released",
             runtime: "Runtime",
             runt_min: 'minutes',
             imbd_rating: "Rating",
@@ -30,13 +30,13 @@ export default {
         favorite: {
             message: "You don't have any favorite movies yet.",
             view_details: "View details",
-            favorits_title: "Favorits",
+            favorites_title: "Favorites",
         },
         layout: {
             main: "Search film",
             favorite: "Favorite",
             language: "language",
-            theme: "сhange theme",
+            theme: "change theme",
             log_in: "Log in",
         },
         Card: {

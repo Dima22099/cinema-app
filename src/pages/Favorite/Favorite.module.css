@@ -1,13 +1,14 @@
-.favorits_title {
+.favorites_title {
     color: var(--color-main);
 }
 
-.favorits {
+.Favorites {
     display: flex;
     gap: 25px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    color: var(--color-main);
 }
 
 .spinner {
