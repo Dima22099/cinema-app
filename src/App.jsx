@@ -1,18 +1,19 @@
 import { RouterProvider } from 'react-router-dom';
-
 import { router } from './routes';
-import { FilmsContextProvider, ThemeProvider } from './context';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from './context';
+import store from './store';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
 
 export const App = () => (
-  <ThemeProvider>
-    <FilmsContextProvider>
-        <RouterProvider router={router} />
-    </FilmsContextProvider>
-  </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider>
+              <RouterProvider router={router} />
+      </ThemeProvider>
+  </ Provider>
 );
 
 export default App;
