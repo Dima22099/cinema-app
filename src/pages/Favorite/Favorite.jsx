@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import { toggleFavorite } from '../../store/slices/film_research_slices';
-
 import { useTranslation } from 'react-i18next';
 
-import { Api } from '../../api';
+import { toggleFavorite } from '../../store/userSlice';
 import { CardFilm, Loader } from '../../components'; 
+import { Api } from '../../api';
 
 import styles from './Favorite.module.css';
 
@@ -15,7 +13,7 @@ export const Favorite = () => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
-    const { allFavorite } = useSelector(state => state.favorite);
+    const { allFavorite } = useSelector(state => state.user);
     const [isLoading, setIsLoading] = useState(false);
     const [films, setFilms] = useState(null);
     
