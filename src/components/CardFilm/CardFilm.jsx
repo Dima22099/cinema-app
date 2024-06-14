@@ -15,7 +15,6 @@ export const CardFilm = ({ title,  poster, id, rating, releaseDate, isFavorite, 
     };
     const placeholderImage = '/noImage.svg'; 
     const isPoster = poster.endsWith('jpg') || poster.endsWith('JPEG');
-    
     return (
         <div className={styles.card} key={id}>
             <div className={styles.blur_background} style={blurStyles} />

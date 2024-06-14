@@ -1,10 +1,11 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Api } from '../../api';
-import { FavoriteFilms } from '../../context/';
+import { toggleFavorite } from '../../store/userSlice';
 import { Loader, CardFilm, Button } from '../../components';
 
 import styles from './Main.module.css';
@@ -12,13 +13,14 @@ import styles from './Main.module.css';
 
 export const Main = () => {
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+
+    const { allFavorite } = useSelector(state => state.user);
 
     const [inputValue, setInputValue] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [films, setFilms] = useState(null);
     const [hasError, setHasError] = useState(false);
-
-    const { favoriteFilms, toggleFavorites  } = useContext(FavoriteFilms);
 
     const getFilms = async (e) => {
         setFilms(null);
@@ -45,7 +47,7 @@ export const Main = () => {
         )
     }
 
-    const onFavoriteToggle = (id) => toggleFavorites(id);
+    const onFavoriteToggle = (id) => dispatch(toggleFavorite(id));
 
     return (
         <div className={styles.main}>
@@ -78,7 +80,7 @@ export const Main = () => {
                     {isLoading && <div className={styles.spinner}><Loader size={'s'} variant={'primary'}/></div>}
                     {(!isLoading && !films) && <h1 className={styles.film_search}>{t('main.title')}</h1>}
                     {(!isLoading && films && films.length > 0) && films.map((el) => {
-                        const isFavorite = Boolean(favoriteFilms[el.id]);
+                        const isFavorite = Boolean(allFavorite[el.id]);
                         const releaseDate = new Date(el.release_date).toLocaleDateString("ru");
                     return (
                         <CardFilm

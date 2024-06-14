@@ -1,19 +1,22 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft } from 'react-bootstrap-icons';
 import { NavLink, useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { useCallback, useEffect, useState } from 'react';
+
 import cn from 'classnames';
 
-import { Loader, CardFilm } from '../../components';
 import { Api } from '../../api';
-import { FavoriteFilms } from '../../context';
+import { Loader, CardFilm } from '../../components';
+import { toggleFavorite } from '../../store/userSlice';
 
 import styles from './Film.module.css';
 
 
 export const Film = () => {
     const { t } = useTranslation();
-    const { favoriteFilms, toggleFavorites } = useContext(FavoriteFilms);
+    const dispatch = useDispatch();
+    const { allFavorite } = useSelector((state) => state.user);
 
     const { id } = useParams();
     const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +54,8 @@ export const Film = () => {
     if (hasError) {
         return <h1 className={styles.loader}>{t("has_error")} ...</h1>
     }
-    const isFavorite = Boolean(favoriteFilms[id]);
+    
+    const isFavorite = Boolean(allFavorite[id]);
     const releaseDate = new Date(filmData.release_date).toLocaleDateString("ru");
     const rating = filmData.vote_average.toFixed(1);
     return (
@@ -71,7 +75,7 @@ export const Film = () => {
                     title={filmData.title}
                     poster={Api.getPosterURL(filmData.poster_path)}
                     isFavorite={isFavorite}
-                    onFavoriteToggle={() => toggleFavorites(filmData.id)}
+                    onFavoriteToggle={() => dispatch(toggleFavorite(filmData.id))}
                     className={cn(styles.card__favorite, { [styles.card__favorite__checked]: isFavorite })}
                     />
                 <div className={styles.film}>

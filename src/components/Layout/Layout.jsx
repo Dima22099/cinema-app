@@ -1,21 +1,25 @@
-import { useContext } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import Form from 'react-bootstrap/Form';
+import { useTranslation } from 'react-i18next';
+import { Outlet, NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { Translate, MoonStars, BrightnessHigh } from 'react-bootstrap-icons';
+
 import cn from 'classnames';
 
-import { ThemeContext, FavoriteFilms } from '../../context';
+import { changeTheme } from '../../store/userSlice';
 import styles from './Layout.module.css';
 
 
 export const Layout = () => {
   const { t, i18n } = useTranslation();
-  const { theme, setTheme } = useContext(ThemeContext);
-  const { favoriteFilms } = useContext(FavoriteFilms);
-
+  const dispatch = useDispatch();
+  const { allFavorite, theme } = useSelector(state => state.user); 
+   
   const changeLanguage = (language) => i18n.changeLanguage(language);
   const getNavLinkClass = ({ isActive }) => cn(styles.link, { [styles.link__active]: isActive });
+  const toggleTheme = () => {
+    dispatch(changeTheme());
+  }
 
   return (
     <div className={styles.page}>
@@ -30,8 +34,8 @@ export const Layout = () => {
           <div className={styles.settings}>
             <div>
               <div className={styles.settings__languages}>
-                <Translate color={theme === 'dark' ? 'white' : 'black'} size={25} />
-                {' '}
+                <Translate color={theme ===  'dark' ? 'white' : 'black'} size={25} /> 
+                  {' '}
                 <span>{t("layout.language")}</span>
               </div>
 
@@ -56,7 +60,7 @@ export const Layout = () => {
               <Form className={styles.switch}>
                 <Form.Check
                   type="switch"
-                  onChange={()=> setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  onChange={toggleTheme} 
                 />
               </Form>
             </div>
@@ -68,7 +72,7 @@ export const Layout = () => {
 
                 <NavLink to={'/favorites'} className={getNavLinkClass}>
                   {t("layout.favorite")}
-                  <span className={styles.link__count}>{Object.keys(favoriteFilms).length}</span>
+                  <span className={styles.link__count}>{Object.keys(allFavorite).length}</span>
                 </NavLink>
 
                 <NavLink to={'/Log_in'} className={getNavLinkClass}>
