@@ -27,6 +27,8 @@ export default {
             imbd_rating: "Рейтинг фильма",
             origin_country: "Страна(ы) производства", 
             genres: "Жанр(ы)",
+            search_film: "Поиск фильмов",
+            reviews_name: "Отзывы",
         },
         favorite: {
             message: "У вас еще нет избранных фильмов.",
@@ -37,11 +39,42 @@ export default {
             favorite: "Мои фильмы",
             language: "Язык",
             theme: "Сменить тему",
-            log_in: "Войти",
+            sign_up: "Войти",
         }, 
         card: {
             noPoster: 'Нет картинки(((',
             rating: "Рейтинг",
-        }
+        },
+        signIn: {
+            registration_form: 'Вход',
+            login: 'Логин',
+            password: 'Пароль',
+            sign_in: 'Войти',
+            
+            login_min: 'Логин должно быть минимум из 2-х символов',
+            login_max: 'Логин не должно быть длиннее 100 символов',
+            login_required: 'Логин обязателен',
+            password_min: 'Пароль должен содержать не менее 6 символов',
+            password_required: 'Пароль обязателен',
+        },
+        signUp: {
+            registration_form: 'Регистрация',
+            name: 'Имя',
+            login: 'Логин',
+            password: 'Пароль',
+            confirm_password: 'Проверка пароля',
+            sign_up: 'Зарегистрироваться',
+
+            name_min: 'Имя должно быть минимум из 2-х символов',
+            name_max: 'Имя не должно быть длиннее 100 символов.',
+            name_required: 'Требуется заполнить',
+            login_min: 'Логин должен быть не менее 4',
+            login_max: 'Логин не должен быть длиннее 100 символов',
+            login_required: 'Требуется заполнить',
+            password_min: 'Пароль должен содержать не менее 6 символов',
+            password_required: 'Пароль обязателен', 
+            confirmPassword: 'Пароли должны совпадать', 
+            confirmPassword_required: 'Требуется подтверждение пароля',
+        },
     }
 };

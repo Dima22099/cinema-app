@@ -75,8 +75,8 @@ export const Layout = () => {
                   <span className={styles.link__count}>{Object.keys(allFavorite).length}</span>
                 </NavLink>
 
-                <NavLink to={'/Log_in'} className={getNavLinkClass}>
-                  {t("layout.log_in")}
+                <NavLink to={'/SignIn'} className={getNavLinkClass}>
+                  {t("layout.sign_up")}
                     <img className={styles.img__log_in} src={"/login.svg"} />
                 </NavLink>
             </div>

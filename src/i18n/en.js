@@ -27,6 +27,8 @@ export default {
             imbd_rating: "Rating",
             origin_country: "origin_country",
             genres: "genres",
+            search_film: "Search film",
+            reviews_name: "Reviews",
         },
         favorite: {
             message: "You don't have any favorite movies yet.",
@@ -37,11 +39,43 @@ export default {
             favorite: "Favorite",
             language: "language",
             theme: "change theme",
-            log_in: "Log in",
+            sign_up: "Sign up",
         },
         card: {
             noPoster: 'No image',
             rating: "Rating",
-        }
+        },
+        signIn: {
+            registration_form: 'Sign in',
+            login: 'Login',
+            password: 'Password',
+            sign_in: 'Sign in',
+            
+            login_min: 'Login must be minimum 2',
+            login_max: 'Login must not be more than 100 characters',
+            login_required: 'Login is required',
+            password_min: 'Password must be at least 6 characters',
+            password_required: 'Password is required',
+        },
+        signUp: {
+            registration_form: 'Sign up',
+            name: 'Name',
+            login: 'Login',
+            password: 'Password',
+            confirm_password: 'Confirm password',
+            sign_up: 'Sign up',
+
+            name_min: 'Name must be minimum 2',
+            name_max: 'Name must not be more than 100 characters',
+            name_required: 'Name is required',
+            login_min: 'Login must be minimum 4',
+            login_max: 'Login must not be more than 100 characters',
+            login_required: 'Login is required',
+            password_min: 'Password must be at least 6 characters',
+            password_required: 'Password is required', 
+            confirmPassword: 'Passwords must match',
+            confirmPassword_required: 'Confirm Password is required'
+
+        },
     }
 };
