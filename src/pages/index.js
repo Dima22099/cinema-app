@@ -1,4 +1,5 @@
 export * from './Main';
 export * from './Film';
 export * from './Favorite';
-export * from './Log_in';
+export * from './SignIn';
+export *from './SignUp';
